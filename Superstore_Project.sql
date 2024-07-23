@@ -26,20 +26,24 @@ VALUES
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
 
+--Write a SQL query that orders the items by price.
 SELECT item_name, price
 FROM superstore
 ORDER by price;
 
+--Write your own SQL query that will show a statistic about the item prices, like a sum, average, minimum, maximum, or count.
 SELECT SUM(price)
 FROM superstore;
 
 SELECT SUM(price*stock_quantity)
 FROM superstore;
 
+--Write your own SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies"
 SELECT category, SUM(price*stock_quantity)
 FROM superstore
 WHERE category= 'Kitchen Supplies';
 
+--Come up with your own question about the data and try to answer it using SQL.
 SELECT category, average_rating, item_name
 FROM superstore
 WHERE category= 'Kitchen Supplies'
