@@ -29,3 +29,13 @@ AND healthcare_benefits=1;
 SELECT company_name, max(revenue)
 FROM fortune_companies
 WHERE industry='Retail';
+
+--Assign all the companies in the Energy industry as "good", "acceptable", or "poor" based on paid days off. 
+
+SELECT company_name,
+CASE WHEN paid_time_off_days >=15 THEN 'good'
+WHEN paid_time_off_days >=10 THEN 'acceptable'
+ELSE 'poor'
+END as paid_time_off_amount
+FROM fortune_companies
+WHERE industry='Energy';
