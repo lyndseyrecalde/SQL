@@ -1,0 +1,19 @@
+SELECT*
+FROM fortune_companies;
+
+--Which company has the most paid time off?
+
+SELECT company_name, paid_time_off_days
+FROM fortune_companies
+ORDER BY paid_time_off_days desc;
+
+SELECT company_name, MAX(paid_time_off_days)
+FROM fortune_companies;
+
+--Which companies in the retail industry offer at least six weeks maternity leave?
+
+SELECT company_name, maternity_leave_weeks
+FROM fortune_companies
+WHERE maternity_leave_weeks>=6
+AND industry='Retail';
+
