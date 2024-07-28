@@ -17,3 +17,9 @@ FROM fortune_companies
 WHERE maternity_leave_weeks>=6
 AND industry='Retail';
 
+--Which companies offer health insurance and at least 10 days of PTO or 6 weeks maternity leave?
+
+SELECT company_name, paid_time_off_days, maternity_leave_weeks
+FROM fortune_companies
+WHERE paid_time_off_days>=10 OR maternity_leave_weeks>=6
+AND healthcare_benefits=1;
