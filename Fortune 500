@@ -1,4 +1,4 @@
---This analysis utilized the follwing Fortune 500 dataset:
+--This analysis utilized the following Fortune 500 dataset:
 
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
