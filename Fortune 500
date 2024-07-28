@@ -23,3 +23,9 @@ SELECT company_name, paid_time_off_days, maternity_leave_weeks
 FROM fortune_companies
 WHERE paid_time_off_days>=10 OR maternity_leave_weeks>=6
 AND healthcare_benefits=1;
+
+--Which company in the Tech industry has the most revenue, and what's their revenue? 
+
+SELECT company_name, max(revenue)
+FROM fortune_companies
+WHERE industry='Retail';
