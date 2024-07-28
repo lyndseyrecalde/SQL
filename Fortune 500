@@ -2,7 +2,6 @@ SELECT*
 FROM fortune_companies;
 
 --Which company has the most paid time off?
-
 SELECT company_name, paid_time_off_days
 FROM fortune_companies
 ORDER BY paid_time_off_days desc;
@@ -11,27 +10,23 @@ SELECT company_name, MAX(paid_time_off_days)
 FROM fortune_companies;
 
 --Which companies in the retail industry offer at least six weeks maternity leave?
-
 SELECT company_name, maternity_leave_weeks
 FROM fortune_companies
 WHERE maternity_leave_weeks>=6
 AND industry='Retail';
 
 --Which companies offer health insurance and at least 10 days of PTO or 6 weeks maternity leave?
-
 SELECT company_name, paid_time_off_days, maternity_leave_weeks
 FROM fortune_companies
 WHERE paid_time_off_days>=10 OR maternity_leave_weeks>=6
 AND healthcare_benefits=1;
 
 --Which company in the Tech industry has the most revenue, and what's their revenue? 
-
 SELECT company_name, max(revenue)
 FROM fortune_companies
 WHERE industry='Retail';
 
 --Assign all the companies in the Energy industry as "good", "acceptable", or "poor" based on paid days off. 
-
 SELECT company_name,
 CASE WHEN paid_time_off_days >=15 THEN 'good'
 WHEN paid_time_off_days >=10 THEN 'acceptable'
