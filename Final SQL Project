@@ -1,0 +1,52 @@
+--Show Customers (their full names, customer ID, and country) who are not in the US.
+SELECT FirstName, LastName, Customerid, Country
+FROM chinook.customers
+WHERE Country !='USA'; 
+
+--Show only the Customers from Brazil.
+SELECT FirstName, LastName, Customerid, Country
+FROM chinook.customers
+WHERE Country= 'Brazil'; 
+
+--Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+SELECT cust.FirstName, cust.LastName, inv.InvoiceId, inv.InvoiceDate, inv.BillingCountry, inv.InvoiceDate
+FROM chinook.invoices as inv
+LEFT JOIN chinook.customers as cust
+on inv.Customerid=cust.Customerid
+WHERE inv.BillingCountry='Brazil';
+
+--Show the Employees who are Sales Agents.
+SELECT * 
+FROM chinook.employees
+WHERE Title="Sales Support Agent";
+
+--Find a unique/distinct list of billing countries from the Invoice table.
+SELECT DISTINCT BillingCountry 
+FROM chinook.Invoices;
+
+--Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+SELECT emp.LastName, emp.Firstname, inv.InvoiceId
+FROM chinook.employees emp 
+JOIN chinook.customers cust ON cust.supportrepid=emp.employeeid
+JOIN chinook.invoices inv ON inv.customerid=cust.customerid;
+
+--Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+SELECT emp.lastName, emp.firstname, cust.firstName, cust.lastName, cust.country, inv.total
+FROM chinook.employees emp 
+JOIN chinook.customers cust ON cust.supportrepid=emp.employeeid
+JOIN chinook.invoices inv ON inv.customerid=cust.customerid;
+
+--How many Invoices were there in 2009?
+SELECT COUNT(*)
+FROM chinook.invoices
+WHERE invoicedate BETWEEN '2009-01-01' AND '2009-12-31';
+
+--What are the total sales for 2009?
+SELECT SUM(Total)
+FROM chinook.invoices
+WHERE invoicedate BETWEEN '2009-01-01' AND '2009-12-31';
+
+--Write a query that includes the purchased track name with each invoice line ID
+SELECT trac.name, inv.invoicelineid
+FROM chinook.tracks trac 
+JOIN chinook.invoice_items inv ON trac.trackid=inv.invoiceid;
