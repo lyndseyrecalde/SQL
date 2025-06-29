@@ -61,3 +61,34 @@ SELECT category, item_name, MIN(average_rating)
 FROM superstore
 GROUP BY 1, 2
 ORDER BY category, MIN(average_rating) DESC;
+
+----Show all columns for items with a rating higher than 4.5.
+SELECT item_name, average_rating
+FROM superstore
+WHERE average_rating>4.5; 
+
+--Find the top 5 most expensive products.
+SELECT item_name, price
+FROM superstore
+ORDER BY price DESC
+LIMIT 5;
+
+--What is the average price of all items in the store?
+SELECT AVG(price) AS average_price
+FROM superstore;
+
+--What is the average rating per category?
+SELECT average_rating, category AS avg_rating
+FROM superstore
+GROUP BY category;
+
+--What is the average rating per category?
+SELECT average_rating, category AS avg_rating
+FROM superstore
+GROUP BY category;
+
+--Show categories with an average rating above 4.5.
+SELECT category, AVG(average_rating) AS avg_rating
+FROM superstore
+GROUP BY category
+HAVING AVG(average_rating) > 4.5;
